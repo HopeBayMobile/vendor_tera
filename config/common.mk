@@ -31,21 +31,21 @@ PRODUCT_PROPERTY_OVERRIDES += \
 #
 
 PRODUCT_COPY_FILES += \
-    $(MY_LOCAL_PATH)/bin/hcfs:system/bin/hcfs:asus \
-    $(MY_LOCAL_PATH)/bin/HCFSvol:system/bin/HCFSvol:asus \
-    $(MY_LOCAL_PATH)/bin/hcfsapid:system/bin/hcfsapid:asus \
-    $(MY_LOCAL_PATH)/bin/hcfsconf:system/bin/hcfsconf:asus \
-    $(MY_LOCAL_PATH)/etc/hcfs.conf:system/etc/hcfs.conf:asus \
-    $(MY_LOCAL_PATH)/lib/libfuse.so:system/lib/libfuse.so:asus \
-    $(MY_LOCAL_PATH)/lib/liblz4.so:system/lib/liblz4.so:asus \
-    $(MY_LOCAL_PATH)/lib/libHCFS_api.so:system/lib/libHCFS_api.so:asus \
-    $(MY_LOCAL_PATH)/lib/libjansson.so:system/lib/libjansson.so:asus \
-    $(MY_LOCAL_PATH)/lib/libcurl.so:system/lib/libcurl.so:asus \
-    $(MY_LOCAL_PATH)/lib/libzip.so:system/lib/libzip.so:asus \
-    $(MY_LOCAL_PATH)/rootdir/init.hcfs.sh:root/init.hcfs.sh:asus \
-    $(MY_LOCAL_PATH)/rootdir/init.tera.rc:root/init.tera.rc:asus 
+    $(MY_LOCAL_PATH)/bin/hcfs:system/bin/hcfs \
+    $(MY_LOCAL_PATH)/bin/HCFSvol:system/bin/HCFSvol \
+    $(MY_LOCAL_PATH)/bin/hcfsapid:system/bin/hcfsapid \
+    $(MY_LOCAL_PATH)/bin/hcfsconf:system/bin/hcfsconf \
+    $(MY_LOCAL_PATH)/etc/hcfs.conf:system/etc/hcfs.conf \
+    $(MY_LOCAL_PATH)/lib/libfuse.so:system/lib/libfuse.so \
+    $(MY_LOCAL_PATH)/lib/liblz4.so:system/lib/liblz4.so \
+    $(MY_LOCAL_PATH)/lib/libHCFS_api.so:system/lib/libHCFS_api.so \
+    $(MY_LOCAL_PATH)/lib/libjansson.so:system/lib/libjansson.so \
+    $(MY_LOCAL_PATH)/lib/libcurl.so:system/lib/libcurl.so \
+    $(MY_LOCAL_PATH)/lib/libzip.so:system/lib/libzip.so \
+    $(MY_LOCAL_PATH)/rootdir/init.hcfs.sh:root/init.hcfs.sh \
+    $(MY_LOCAL_PATH)/rootdir/init.tera.rc:root/init.tera.rc 
 
-#$(MY_LOCAL_PATH)/lib/libterafonnapi.so:system/lib/libterafonnapi.so:asus \
+#$(MY_LOCAL_PATH)/lib/libterafonnapi.so:system/lib/libterafonnapi.so \
 
 ## HCFS management app
 #PRODUCT_PACKAGES +=\
