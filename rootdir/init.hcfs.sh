@@ -13,6 +13,7 @@ init_hcfs() {
     rm -rf /data/data
     rm -rf /data/app
     mkdir /data/data
+    mkdir /data/app
     mkdir /data/hcfs
     mkdir /data/hcfs/metastorage
     mkdir /data/hcfs/blockstorage
