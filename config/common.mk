@@ -43,13 +43,13 @@ PRODUCT_COPY_FILES += \
     $(MY_LOCAL_PATH)/lib/libcurl.so:system/lib/libcurl.so \
     $(MY_LOCAL_PATH)/lib/libzip.so:system/lib/libzip.so \
     $(MY_LOCAL_PATH)/rootdir/init.hcfs.sh:root/init.hcfs.sh \
-    $(MY_LOCAL_PATH)/rootdir/init.tera.rc:root/init.tera.rc 
-
-#$(MY_LOCAL_PATH)/lib/libterafonnapi.so:system/lib/libterafonnapi.so \
+    $(MY_LOCAL_PATH)/rootdir/init.tera.rc:root/init.tera.rc \
+    $(MY_LOCAL_PATH)/lib/libterafonnapi.so:system/lib/libterafonnapi.so
+#    $(MY_LOCAL_PATH)/rootdir/post_sdcard.sh:root/post_sdcard.sh
 
 ## HCFS management app
-#PRODUCT_PACKAGES +=\
-#    HopebayHCFSmgmt \
+PRODUCT_PACKAGES +=\
+    HopebayHCFSmgmt
 #    TeraService \
 #    Launcher3 \
 #    HBTUpdater

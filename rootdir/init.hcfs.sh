@@ -21,7 +21,7 @@ init_hcfs() {
 
     while [ ! -e ${HCFSCONF} ]; do sleep 0.1; done
 
-    /system/bin/hcfs -oallow_other,big_writes,subtype=hcfs,fsname=/dev/fuse &
+    /system/bin/hcfs -oallow_other,big_writes,writeback_cache,subtype=hcfs,fsname=/dev/fuse &
 
     while [ ! -e /dev/shm/hcfs_reporter ]; do sleep 0.1; done
 
@@ -33,7 +33,6 @@ init_hcfs() {
     chown system:system /data/data
     chmod 771 /data/data
 
-    mkdir /data/app
     /system/bin/HCFSvol create hcfs_app internal
     /system/bin/HCFSvol mount hcfs_app /data/app
 
@@ -42,15 +41,18 @@ init_hcfs() {
 
     /system/bin/HCFSvol create hcfs_external external
 
-    mkdir /mnt/shell/emulated 0700 shell shell
-    mkdir /storage/emulated 0555 root root
-    mkdir /storage/emulated/legacy 0555 root root
+#    mkdir /mnt/shell/emulated 0700 shell shell
+#    mkdir /storage/emulated 0555 root root
+#    mkdir /storage/emulated/legacy 0555 root root
 
     /system/bin/HCFSvol mount hcfs_external /mnt/shell/emulated
 
     mkdir /mnt/shell/emulated/0 0700 root sdcard_r
     mkdir /mnt/shell/emulated/obb 0700 root sdcard_r
-    setprop init.svc.sdcard running 
+    #setprop init.svc.sdcard running 
+
+#    mount -o bind /mnt/shell/emulated/0 /storage/emulated/legacy
+    mount -o bind /mnt/shell/emulated/0 /storage/emulated/0
 
     #mkdir -p ${SMARTCACHEMTP}
     #chmod 771 ${SMARTCACHEMTP}
