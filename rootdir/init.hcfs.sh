@@ -15,13 +15,11 @@ init_hcfs() {
     # Adding folders for Kitkat
     rm -rf /data/app-lib
     rm -rf /data/dalvik-cache
-    rm -rf /data/app-bin
 
     mkdir /data/data
-    # On Kitkat, mount app partition on /data/app-bin and create
-    # symbolic links for /data/app, /data/app-lib, and /data/dalvik-cache
-    mkdir /data/app-bin
-    # mkdir /data/app
+    mkdir /data/app
+    mkdir /data/app-lib
+    mkdir /data/dalvik-cache
     mkdir /data/hcfs
     mkdir /data/hcfs/metastorage
     mkdir /data/hcfs/blockstorage
@@ -43,24 +41,22 @@ init_hcfs() {
     chmod 771 /data/data
 
     /system/bin/HCFSvol create hcfs_app internal
-    /system/bin/HCFSvol mount hcfs_app /data/app-bin
+    /system/bin/HCFSvol mount hcfs_app /data/app
 
-    chown system:system /data/app-bin
-    chmod 771 /data/app-bin
+    chown system:system /data/app
+    chmod 771 /data/app
 
-    # Create folders and symbolic links
-    mkdir /data/app-bin/app
-    chown system:system /data/app-bin/app
-    chmod 711 /data/app-bin/app
-    ln -s /data/app-bin/app /data/app
-    mkdir /data/app-bin/app-lib
-    chown system:system /data/app-bin/app-lib
-    chmod 711 /data/app-bin/app-lib
-    ln -s /data/app-bin/app-lib /data/app-lib
-    mkdir /data/app-bin/dalvik-cache
-    chown system:system /data/app-bin/dalvik-cache
-    chmod 711 /data/app-bin/dalvik-cache
-    ln -s /data/app-bin/dalvik-cache /data/dalvik-cache
+    /system/bin/HCFSvol create hcfs_applib internal
+    /system/bin/HCFSvol mount hcfs_applib /data/app-lib
+
+    chown system:system /data/app-lib
+    chmod 771 /data/app-lib
+
+    /system/bin/HCFSvol create hcfs_dalvik internal
+    /system/bin/HCFSvol mount hcfs_dalvik /data/dalvik-cache
+
+    chown system:system /data/dalvik-cache
+    chmod 771 /data/dalvik-cache
 
     /system/bin/HCFSvol create hcfs_external external
 
