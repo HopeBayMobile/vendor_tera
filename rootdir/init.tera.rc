@@ -16,7 +16,7 @@
 
 # Vince
 on init
-    mkdir /dev/shm 0700 root root
+    mkdir /dev/shm 0770 root system
     mkdir /tmp 0700 root root
     mount tmpfs tmpfs /tmp mode=0755,gid=1000
 
