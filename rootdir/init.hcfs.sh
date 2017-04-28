@@ -32,7 +32,7 @@ init_hcfs() {
 
     while [ ! -e /dev/shm/hcfs_reporter ]; do sleep 0.1; done
 
-    #/system/bin/HCFSvol toggle_use_minimal_apk on 
+    /system/bin/HCFSvol toggle_use_minimal_apk on 
 
     /system/bin/HCFSvol create hcfs_data internal
     /system/bin/HCFSvol mount hcfs_data /data/data
