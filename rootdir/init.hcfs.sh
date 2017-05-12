@@ -28,7 +28,7 @@ init_hcfs() {
 
     while [ ! -e ${HCFSCONF} ]; do sleep 0.1; done
 
-    /system/bin/hcfs -oallow_other,big_writes,writeback_cache,subtype=hcfs,fsname=/dev/fuse &
+    /system/bin/hcfs -oallow_other,big_writes,writeback_cache,subtype=hcfs,fstype=fusenew,fsname=fusenew &
 
     while [ ! -e /dev/shm/hcfs_reporter ]; do sleep 0.1; done
 
