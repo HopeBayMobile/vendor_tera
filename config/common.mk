@@ -30,6 +30,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 #    init_shell.te
 #
 
+ifeq ($(BUILD_HCFS),)
 PRODUCT_COPY_FILES += \
     $(MY_LOCAL_PATH)/bin/hcfs:system/bin/hcfs \
     $(MY_LOCAL_PATH)/bin/HCFSvol:system/bin/HCFSvol \
@@ -45,6 +46,23 @@ PRODUCT_COPY_FILES += \
     $(MY_LOCAL_PATH)/rootdir/init.tera.rc:root/init.tera.rc \
     $(MY_LOCAL_PATH)/lib/libterafonnapi.so:system/lib/libterafonnapi.so
 #    $(MY_LOCAL_PATH)/rootdir/post_sdcard.sh:root/post_sdcard.sh
+else
+PRODUCT_PACKAGES += \
+    hcfs \
+    HCFSvol \
+    hcfsapid \
+    hcfsconf
+
+PRODUCT_PACKAGES += \
+    libhcfsapi \
+    libfuse \
+    libjansson
+
+PRODUCT_COPY_FILES += \
+    $(MY_LOCAL_PATH)/etc/hcfs.conf:system/etc/hcfs.conf \
+    $(MY_LOCAL_PATH)/rootdir/init.hcfs.sh:root/init.hcfs.sh \
+    $(MY_LOCAL_PATH)/rootdir/init.tera.rc:root/init.tera.rc
+endif
 
 ## HCFS management app
 PRODUCT_PACKAGES +=\
