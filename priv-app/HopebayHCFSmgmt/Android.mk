@@ -4,7 +4,11 @@ LOCAL_MODULE := HopebayHCFSmgmt
 LOCAL_MODULE_TAGS := optional
 #LOCAL_BUILT_MODULE_STEM := package.apk
 LOCAL_MODULE_PATH := $(PRODUCT_OUT)/$(TARGET_COPY_OUT_SYSTEM)/priv-app
-LOCAL_SRC_FILES := HopebayHCFSmgmt.apk
+ifeq ($(TARGET_ARCH),x86_64)
+    LOCAL_SRC_FILES := x86_64/HopebayHCFSmgmt.apk
+else
+    LOCAL_SRC_FILES := HopebayHCFSmgmt.apk
+endif
 LOCAL_CERTIFICATE := testkey
 LOCAL_MODULE_CLASS := APPS
 LOCAL_PRIVILEGED_MODULE := true
