@@ -12,14 +12,9 @@ HCFSBLOCK=hcfsblock
 init_hcfs() {
     rm -rf /data/data
     rm -rf /data/app
-    # Adding folders for Kitkat
-    rm -rf /data/app-lib
-    rm -rf /data/dalvik-cache
 
     mkdir /data/data
     mkdir /data/app
-    mkdir /data/app-lib
-    mkdir /data/dalvik-cache
     mkdir /data/hcfs
     mkdir /data/hcfs/metastorage
     mkdir /data/hcfs/blockstorage
@@ -45,18 +40,6 @@ init_hcfs() {
 
     chown system:system /data/app
     chmod 771 /data/app
-
-    /system/bin/HCFSvol create hcfs_applib internal
-    /system/bin/HCFSvol mount hcfs_applib /data/app-lib
-
-    chown system:system /data/app-lib
-    chmod 771 /data/app-lib
-
-    /system/bin/HCFSvol create hcfs_dalvik internal
-    /system/bin/HCFSvol mount hcfs_dalvik /data/dalvik-cache
-
-    chown system:system /data/dalvik-cache
-    chmod 771 /data/dalvik-cache
 
     /system/bin/HCFSvol create hcfs_external multiexternal
 
