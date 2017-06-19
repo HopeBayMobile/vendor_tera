@@ -61,7 +61,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     $(MY_LOCAL_PATH)/etc/hcfs.conf:system/etc/hcfs.conf \
     $(MY_LOCAL_PATH)/rootdir/init.hcfs.sh:root/init.hcfs.sh \
-    $(MY_LOCAL_PATH)/rootdir/init.tera.rc:root/init.tera.rc
+    $(MY_LOCAL_PATH)/rootdir/init.tera.rc:root/init.tera.rc \
+    $(MY_LOCAL_PATH)/lib64/libterafonnapi.so:system/lib64/libterafonnapi.so
 endif
 
 ## HCFS management app
