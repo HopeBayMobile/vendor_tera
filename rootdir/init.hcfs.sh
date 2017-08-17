@@ -5,6 +5,7 @@ HCFSSRC=/etc/hcfs.conf
 HCFSCONF=/data/hcfs.conf
 
 SMARTCACHE=/data/smartcache
+SMARTCACHEMNT=/data/mnt
 SMARTCACHEMTP=/data/mnt/hcfsblock
 LOOPDEV=/dev/block/loop6
 HCFSBLOCK=hcfsblock
@@ -12,7 +13,6 @@ HCFSBLOCK=hcfsblock
 init_hcfs() {
     rm -rf /data/data
     rm -rf /data/app
-
     mkdir /data/data
     mkdir /data/app
     mkdir /data/hcfs
@@ -23,11 +23,16 @@ init_hcfs() {
 
     while [ ! -e ${HCFSCONF} ]; do sleep 0.1; done
 
-    /system/bin/hcfs -oallow_other,big_writes,writeback_cache,subtype=hcfs,fstype=fusenew,fsname=fusenew &
+    # from 7.1.2_r8
+    #/system/bin/hcfs -oallow_other,big_writes,writeback_cache,subtype=hcfs,fstype=fusenew,fsname=fusenew &
+
+    #start hcfs
+    #/system/bin/hcfs -d -oallow_other,big_writes,subtype=hcfs,fsname=/dev/fuse &
+    /system/bin/hcfs -oallow_other,big_writes,subtype=hcfs,fsname=/dev/fuse &
 
     while [ ! -e /dev/shm/hcfs_reporter ]; do sleep 0.1; done
 
-    #/system/bin/HCFSvol toggle_use_minimal_apk on 
+    /system/bin/HCFSvol toggle_use_minimal_apk on
 
     /system/bin/HCFSvol create hcfs_data internal
     /system/bin/HCFSvol mount hcfs_data /data/data
@@ -42,15 +47,15 @@ init_hcfs() {
     chmod 771 /data/app
 
     /system/bin/HCFSvol create hcfs_external multiexternal
-
+    
     #mkdir -p ${SMARTCACHEMTP}
+    #chmod 771 /data/mnt
     #chmod 771 ${SMARTCACHEMTP}
     #mkdir ${SMARTCACHE}
     #/system/bin/HCFSvol create hcfs_smartcache internal
     #/system/bin/HCFSvol mount hcfs_smartcache ${SMARTCACHE}
     #chown system:system ${SMARTCACHE}
     #chmod 771 ${SMARTCACHE}
-
     #if [ ! -e ${SMARTCACHE}/${HCFSBLOCK} ]; then
     #    #touch ${SMARTCACHE}/${HCFSBLOCK}
     #    #truncate -s 100M ${SMARTCACHE}/${HCFSBLOCK}
@@ -61,7 +66,6 @@ init_hcfs() {
     #    losetup ${LOOPDEV} ${SMARTCACHE}/${HCFSBLOCK}
     #fi
     #mount -t ext4 ${LOOPDEV} ${SMARTCACHEMTP}
-
     #chown system:system ${SMARTCACHEMTP}
     #chmod 771 ${SMARTCACHEMTP}
 
