@@ -38,7 +38,7 @@ PRODUCT_COPY_FILES += \
     $(MY_LOCAL_PATH)/bin/hcfsconf:system/bin/hcfsconf \
     $(MY_LOCAL_PATH)/etc/hcfs.conf:system/etc/hcfs.conf \
     $(MY_LOCAL_PATH)/lib64/libfuse.so:system/lib64/libfuse.so \
-    $(MY_LOCAL_PATH)/lib64/libHCFS_api.so:system/lib64/libHCFS_api.so \
+    $(MY_LOCAL_PATH)/lib64/libHCFS_api.so:system/lib64/libhcfsapi.so \
     $(MY_LOCAL_PATH)/lib64/libjansson.so:system/lib64/libjansson.so \
     $(MY_LOCAL_PATH)/lib64/liblz4.so:system/lib64/liblz4.so \
     $(MY_LOCAL_PATH)/lib64/libzip.so:system/lib64/libzip.so \
@@ -46,6 +46,10 @@ PRODUCT_COPY_FILES += \
     $(MY_LOCAL_PATH)/rootdir/init.tera.rc:root/init.tera.rc \
     $(MY_LOCAL_PATH)/lib/libterafonnapi.so:system/lib/libterafonnapi.so
 #    $(MY_LOCAL_PATH)/rootdir/post_sdcard.sh:root/post_sdcard.sh
+
+PRODUCT_PACKAGES += \
+    libcurl
+
 else
 PRODUCT_PACKAGES += \
     hcfs \
